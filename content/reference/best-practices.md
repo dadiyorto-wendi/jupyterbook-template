@@ -101,11 +101,13 @@ Colour choice is the single most common visualisation issue flagged in expert re
 
 **Choose the palette by data type.** Sequential, diverging, categorical, and cyclic data each require a different palette family; using the wrong family is as serious as using a CVD-unsafe one.
 
+**ColorBrewer for maps.** [ColorBrewer 2.0](https://colorbrewer2.org) remains a useful source for cartographic sequential, diverging, and qualitative palettes, especially for choropleth and classified maps. Use the **colorblind safe** filter on the ColorBrewer website, then still check the rendered figure with desaturation or a CVD simulator. Not every ColorBrewer scheme is suitable for every data type, class count, or continuous field.
+
 | Data type | Recommended palettes | Avoid |
 |---|---|---|
-| **Sequential** (e.g. temperature, precipitation, concentration) | matplotlib built-ins: `viridis`, `cividis`, `plasma`, `inferno`, `magma`. Richer set: `batlow`, `lajolla`, `lapaz` (`cmcrameri`). Oceanographic: `cmocean.thermal`, `cmocean.haline`. | `jet`, `rainbow`, `gist_rainbow`, `hsv` |
-| **Diverging** (anomalies, biases, departures from a reference) | matplotlib: `RdBu_r`, `PuOr`, `BrBG`. Richer set: `vik`, `roma`, `bam` (`cmcrameri`). Oceanographic: `cmocean.balance`, `cmocean.curl`. | `seismic` (luminance non-monotonic); red–green diverging maps without a luminance change |
-| **Categorical / qualitative** | matplotlib `tab10`; the Wong 8-colour palette (Okabe–Ito); `cmcrameri.cm.categorical`. Keep to **≤ 8** categories on a single map — split or facet otherwise. | More than ~8 categories; bespoke colour mixes that have not been CVD-tested |
+| **Sequential** (e.g. temperature, precipitation, concentration) | matplotlib built-ins: `viridis`, `cividis`, `plasma`, `inferno`, `magma`. Richer set: `batlow`, `lajolla`, `lapaz` (`cmcrameri`). Oceanographic: `cmocean.thermal`, `cmocean.haline`. For classified maps: ColorBrewer sequential schemes marked colorblind safe. | `jet`, `rainbow`, `gist_rainbow`, `hsv` |
+| **Diverging** (anomalies, biases, departures from a reference) | matplotlib: `RdBu_r`, `PuOr`, `BrBG`. Richer set: `vik`, `roma`, `bam` (`cmcrameri`). Oceanographic: `cmocean.balance`, `cmocean.curl`. For classified maps: ColorBrewer diverging schemes marked colorblind safe. | `seismic` (luminance non-monotonic); red–green diverging maps without a luminance change |
+| **Categorical / qualitative** | matplotlib `tab10`; the Wong 8-colour palette (Okabe–Ito); `cmcrameri.cm.categorical`; ColorBrewer qualitative schemes marked colorblind safe. Keep to **≤ 8** categories on a single map — split or facet otherwise. | More than ~8 categories; bespoke colour mixes that have not been CVD-tested |
 | **Cyclic** (wind direction, phase, time of day) | matplotlib `twilight`, `twilight_shifted`. Richer set: `romaO`, `vikO`, `corkO` (`cmcrameri`). | Non-cyclic palettes with a visible seam |
 | **Radar / weather domain** | `cmweather` colormaps (e.g. `ChaseSpectral`, `LangRainbow12`) — designed for CVD readers (Sherman *et al.*, 2024). | Legacy NWS rainbow-style radar palettes |
 
@@ -123,6 +125,7 @@ For richer palettes, install on demand and add to `environment.yml`:
 pip install cmcrameri    # Crameri scientific colour maps
 pip install cmweather    # radar/meteorology, CVD-friendly (Sherman et al., 2024)
 pip install cmocean      # oceanographic / atmospheric
+pip install colorbrewer  # ColorBrewer map palettes
 ```
 
 ```python
@@ -133,6 +136,7 @@ plt.imshow(data, cmap=cmc.batlow)
 **Authority references.** Cite at least one of these when a notebook applies a non-default palette, so reviewers can verify the choice against a stated source:
 
 - Crameri F., Shephard G. E., Heron P. J. (2020). *The misuse of colour in science communication.* Nature Communications 11, 5444. <https://doi.org/10.1038/s41467-020-19160-7>
+- ColorBrewer 2.0. *Color Advice for Cartography.* <https://colorbrewer2.org>
 - Sherman Z. *et al.* (2024). *Effective Visualization of Radar Data for Users Impacted by Color Vision Deficiency.* BAMS 105(8). <https://doi.org/10.1175/BAMS-D-23-0056.1>
 - Rocchini D. *et al.* (2023). *Scientific maps should reach everyone: The cblindplot R package to let colour blind people visualise spatial patterns.* Ecological Informatics 76, 102045. <https://doi.org/10.1016/j.ecoinf.2023.102045>
 - Hewson, T. (2022). *Creative Use of Colour to Satisfy Different User Needs.* UEF 2022, ECMWF.
