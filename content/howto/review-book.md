@@ -42,18 +42,29 @@ To get the link to the rendered Jupyter Book (GitHub pages), go to the "Actions"
 
 ## Self-review checklist
 
-Before opening a pull request for review, verify that your notebook has filled in (or, where applicable, removed) each of the sections introduced by the template. The checklist below mirrors the manual-review criteria; the [pull request template](../../.github/pull_request_template.md) asks you to link to the section in your deployed book that satisfies each one.
+Before opening a pull request for review, verify that your notebook has filled in (or, where applicable, removed) each of the sections introduced by the template. The checklist below mirrors the manual-review criteria; the [pull request template](../../.github/pull_request_template.md) asks you to demonstrate that each criterion has been addressed. Where applicable, provide a link to the relevant section in the deployed notebook.
 
-- **Prerequisites** — prior knowledge, related notebooks, required tools/accounts.
-- **Target audience** — skill level, role, domain background assumed.
-- **Introduction & workflow overview** — context plus an ordered outline of the steps.
+- **Notebook title and introduction** — title, context, purpose, and an ordered outline of the workflow.
 - **Learning objectives** — what the reader will be able to do after the notebook.
-- **Method and data justification** — why this method, why this dataset, assumptions and limits.
-- **Transferability** — what the learner can adapt (region, resolution, variables) and what is fixed.
-- **Validation** *(optional)* — sanity checks performed and known limitations.
-- **References** — datasets (DOI / persistent ID / stable URL), publications, reused figures.
-- **Definitions** *(optional)* — used only when several novel terms are introduced; otherwise define on first use.
-- **Figures** — title, axis labels with units, legend, caption with source/attribution; honest scaling; sufficient image quality.
-- **Code** — inline comments on non-trivial blocks; docstrings on custom functions; a markdown cell precedes each logical code block.
+  - **Target audience** *(optional)* — skill level, role, or domain background assumed.
+- **Prepare your environment** — short explanation of the setup steps needed before analysis.
+  - **Special prerequisites** *(optional)* — unusual tools, accounts, data access, or setup requirements.
+  - **(Install and) Import libraries** — required libraries are installed or imported clearly, with no unused or unexplained setup.
+  - **Setup credentials** *(optional)* — credentials are configured without exposing secrets.
+  - **Define your data request** *(optional)* — data request parameters are clear, reproducible, and appropriate for the notebook.
+- **Main workflow** — the analytical workflow is ordered and easy to follow.
+  - **Code sections** — generic placeholders such as `Code section 1` and `Code section 2` have been replaced with meaningful headings; each logical code block is preceded by explanatory markdown.
+- **Take home messages** — the notebook closes with the main learning points or practical conclusions.
+- **References** — datasets (DOI / persistent ID / stable URL), publications, and reused figures.
+- **Glossary** *(optional)* — used only when several novel terms are introduced; otherwise define terms on first use.
+- **Licence** *(optional / if applicable)* — licence terms are included where required for data, code, or reused material.
+
+Some manual-review criteria are notebook-wide checks rather than direct notebook sections. Use the pull request template to justify these items when they are not explicit in the notebook text:
+
+- **Method and data choice** — why the selected method and dataset are appropriate for the learning objective.
+- **Transferability** — what the learner can safely adapt (for example, region, resolution, variables, or time period) and what is fixed.
+- **Validation / limitations** — sanity checks performed, known limitations, or why a separate validation step is not applicable.
+- **Figures and visualisations** — titles, axis labels with units, legends, captions, source attribution, readable scaling, and sufficient image quality.
+- **Code clarity** — comments on non-trivial blocks, docstrings on custom functions, and readable cell length.
 
 If a section does not apply to your notebook, remove it (or mark it *not applicable*) rather than leaving the placeholder text in place.
